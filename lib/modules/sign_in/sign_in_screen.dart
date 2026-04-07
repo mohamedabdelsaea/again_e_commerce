@@ -18,148 +18,150 @@ class _SignInScreenState extends State<SignInScreen> {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: AppColor.primary,
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: size.height * 0.15),
-            Text(
-              'Welcome Back App',
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: AppColor.white,
-              ),
-            ),
-            SizedBox(height: 5),
-            Text(
-              'Please sign in with your mail',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: AppColor.white,
-              ),
-            ),
-            SizedBox(height: 34),
-            Text(
-              'User Name :',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: AppColor.white,
-              ),
-            ),
-            SizedBox(height: 20),
-
-            TextFormField(
-              decoration: CustomFormFiled.inputDecoration('Enter Your Name'),
-              style: CustomFormFiled.textStyle(fontSize: 18),
-              cursorColor: CustomFormFiled.cursorColor,
-            ),
-            SizedBox(height: 40),
-            Text(
-              'User Password :',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: AppColor.white,
-              ),
-            ),
-            SizedBox(height: 20),
-            TextFormField(
-              obscureText: isObscure,
-              decoration: InputDecoration(
-                hintText: 'Enter Your Password',
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    isObscure ? Icons.visibility_off : Icons.visibility,
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      isObscure = !isObscure;
-                    });
-                  },
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: size.height * 0.15),
+              Text(
+                'Welcome Back App',
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: AppColor.white,
                 ),
-                hintStyle: TextStyle(
-                  color: AppColor.primary,
-                  fontWeight: FontWeight.w500,
+              ),
+              SizedBox(height: 5),
+              Text(
+                'Please sign in with your mail',
+                style: TextStyle(
                   fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: AppColor.white,
                 ),
-                filled: true,
-                fillColor: AppColor.white,
-                focusColor: AppColor.primary,
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: AppColor.white, width: 2),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: AppColor.white, width: 2),
-                ),
-                errorBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: const BorderSide(color: Colors.red, width: 2),
-                ),
-                focusedErrorBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: const BorderSide(color: Colors.red, width: 2),
-                ),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
               ),
-              style: CustomFormFiled.textStyle(fontSize: 18),
-              cursorColor: CustomFormFiled.cursorColor,
-            ),
-            SizedBox(height: size.height * 0.05),
-            SizedBox(
-              height: size.height * 0.06,
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  navigatorKey.currentState!.pushNamedAndRemoveUntil(
-                    PageRouteName.layOut,
-                    (route) => false,
-                  );
-                },
-                child: Text(
-                  'Login',
-                  style: TextStyle(
+              SizedBox(height: 34),
+              Text(
+                'User Name :',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: AppColor.white,
+                ),
+              ),
+              SizedBox(height: 20),
+
+              TextFormField(
+                decoration: CustomFormFiled.inputDecoration('Enter Your Name'),
+                style: CustomFormFiled.textStyle(fontSize: 18),
+                cursorColor: CustomFormFiled.cursorColor,
+              ),
+              SizedBox(height: 40),
+              Text(
+                'User Password :',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: AppColor.white,
+                ),
+              ),
+              SizedBox(height: 20),
+              TextFormField(
+                obscureText: isObscure,
+                decoration: InputDecoration(
+                  hintText: 'Enter Your Password',
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      isObscure ? Icons.visibility_off : Icons.visibility,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        isObscure = !isObscure;
+                      });
+                    },
+                  ),
+                  hintStyle: TextStyle(
                     color: AppColor.primary,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 28,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: size.height * 0.05),
-            Row(
-              children: [
-                Text(
-                  'Don’t have an account !? ',
-                  style: TextStyle(
-                    fontSize: 14,
                     fontWeight: FontWeight.w500,
-                    color: AppColor.white,
+                    fontSize: 16,
                   ),
+                  filled: true,
+                  fillColor: AppColor.white,
+                  focusColor: AppColor.primary,
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(color: AppColor.white, width: 2),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(color: AppColor.white, width: 2),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(color: Colors.red, width: 2),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(color: Colors.red, width: 2),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                 ),
-                TextButton(
+                style: CustomFormFiled.textStyle(fontSize: 18),
+                cursorColor: CustomFormFiled.cursorColor,
+              ),
+              SizedBox(height: size.height * 0.05),
+              SizedBox(
+                height: size.height * 0.06,
+                width: double.infinity,
+                child: ElevatedButton(
                   onPressed: () {
-                    navigatorKey.currentState!.pushNamed(
-                      PageRouteName.signUp,
+                    navigatorKey.currentState!.pushNamedAndRemoveUntil(
+                      PageRouteName.layOut,
+                      (route) => false,
                     );
                   },
                   child: Text(
-                    'Create Account',
+                    'Login',
                     style: TextStyle(
-                      fontSize: 18,
+                      color: AppColor.primary,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 28,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: size.height * 0.05),
+              Row(
+                children: [
+                  Text(
+                    'Don’t have an account !? ',
+                    style: TextStyle(
+                      fontSize: 14,
                       fontWeight: FontWeight.w500,
                       color: AppColor.white,
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                  TextButton(
+                    onPressed: () {
+                      navigatorKey.currentState!.pushNamed(
+                        PageRouteName.signUp,
+                      );
+                    },
+                    child: Text(
+                      'Create Account',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: AppColor.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

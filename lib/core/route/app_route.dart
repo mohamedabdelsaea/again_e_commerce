@@ -1,5 +1,6 @@
 import 'package:again_e_commerce/core/route/page_route_name.dart';
 import 'package:again_e_commerce/modules/layout/lay_out_screen.dart';
+import 'package:again_e_commerce/modules/layout/shopping/shopping_screen.dart';
 import 'package:again_e_commerce/modules/sign_in/sign_in_screen.dart';
 import 'package:again_e_commerce/modules/sign_up/sign_up_screen.dart';
 import 'package:again_e_commerce/modules/splash/splash_screen.dart';
@@ -17,8 +18,11 @@ class AppRoute {
       case PageRouteName.signUp:
         return MaterialPageRoute(builder: (context) => SignUpScreen());
 
-        case PageRouteName.layOut:
+      case PageRouteName.layOut:
         return MaterialPageRoute(builder: (context) => LayOutScreen());
+
+      case PageRouteName.shopping:
+        return MaterialPageRoute(builder: (context) => ShoppingScreen());
 
       default:
         return MaterialPageRoute(builder: (context) => SplashScreen());

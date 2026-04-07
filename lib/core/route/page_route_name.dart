@@ -6,4 +6,5 @@ class PageRouteName {
   static const String signUp = 'signUn';
 
   static const String layOut = 'layOut';
+  static const String shopping = 'shopping';
 }
