@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../core/route/page_route_name.dart';
-import '../core/them/app_color.dart';
-import '../main.dart';
+import '../../main.dart';
+import '../route/page_route_name.dart';
+import '../them/app_color.dart';
 
 class SearchShopping extends StatelessWidget {
   const SearchShopping({super.key});

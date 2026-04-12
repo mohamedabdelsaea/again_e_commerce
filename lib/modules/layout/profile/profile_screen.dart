@@ -1,6 +1,6 @@
 import 'package:again_e_commerce/core/them/app_color.dart';
-import 'package:again_e_commerce/model/profile_form_filed.dart';
 import 'package:flutter/material.dart';
+import '../../../core/model/profile_form_filed.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

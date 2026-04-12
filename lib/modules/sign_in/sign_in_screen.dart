@@ -1,6 +1,6 @@
 import 'package:again_e_commerce/core/them/app_color.dart';
-import 'package:again_e_commerce/model/custom_form_filed.dart';
 import 'package:flutter/material.dart';
+import '../../core/model/custom_form_filed.dart';
 import '../../core/route/page_route_name.dart';
 import '../../main.dart';
 

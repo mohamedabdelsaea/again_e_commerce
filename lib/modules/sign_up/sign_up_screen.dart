@@ -1,8 +1,8 @@
 import 'package:again_e_commerce/core/route/page_route_name.dart';
 import 'package:again_e_commerce/main.dart';
 import 'package:flutter/material.dart';
+import '../../core/model/custom_form_filed.dart';
 import '../../core/them/app_color.dart';
-import '../../model/custom_form_filed.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
