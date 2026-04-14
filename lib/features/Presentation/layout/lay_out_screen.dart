@@ -1,9 +1,9 @@
 import 'package:again_e_commerce/core/them/app_color.dart';
-import 'package:again_e_commerce/modules/layout/categories/categories_screen.dart';
-import 'package:again_e_commerce/modules/layout/favorites/favorites_screen.dart';
-import 'package:again_e_commerce/modules/layout/home/home_screen.dart';
-import 'package:again_e_commerce/modules/layout/profile/profile_screen.dart';
+import 'package:again_e_commerce/features/Presentation/layout/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
+import 'categories/categories_screen.dart';
+import 'favorites/favorites_screen.dart';
+import 'home/home_screen.dart';
 
 class LayOutScreen extends StatefulWidget {
   const LayOutScreen({super.key});
