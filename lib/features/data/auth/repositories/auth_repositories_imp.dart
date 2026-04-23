@@ -1,3 +1,4 @@
+import 'package:again_e_commerce/core/failures/failures.dart';
 import 'package:again_e_commerce/features/data/auth/data_source/auth_interface_data_source.dart';
 import 'package:again_e_commerce/features/data/auth/models/sign_in_model.dart';
 import 'package:again_e_commerce/features/domain/auth/entity/sign_in_request.dart';
@@ -6,27 +7,36 @@ import 'package:again_e_commerce/features/domain/auth/repositories/auth_reposito
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
+import '../../../../core/failures/failure.dart';
+
 class AuthRepositoriesImp implements AuthRepositories {
   final AuthInterfaceDataSource _authInterfaceDataSource;
 
   AuthRepositoriesImp(this._authInterfaceDataSource);
 
   @override
-  Future<Either<String, SignInResponse>> signIn(SignInRequest data) async {
+  Future<Either<Failure, SignInResponse>> signIn(SignInRequest data) async {
     try {
       final response = await _authInterfaceDataSource.signIn(data);
       if (response.statusCode == 200) {
         var data = SignInModel.fromJson(response.data);
         return Right(data);
       } else {
-        return Left('message${response.statusCode}!!Fail');
+        return Left(
+          ServerFailure(
+            statusCode: response.statusCode.toString(),
+            message: response.data['Message'],
+          ),
+        );
       }
     } on DioException catch (dioException) {
       return Left(
-        'message?${dioException.response?.statusCode.toString() ?? 'Fail'}',
+        ServerFailure(
+          statusCode: dioException.response?.statusCode.toString()??'',
+          message: dioException.response?.data['Message'],
+        ),
       );
     }
-
   }
 
   @override
