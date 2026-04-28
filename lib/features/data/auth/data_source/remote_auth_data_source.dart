@@ -9,7 +9,7 @@ class RemoteAuthDataSource implements AuthInterfaceDataSource {
 
   @override
   Future<Response>  signIn(SignInRequest data) async {
-    return await _dio.post('/api/v1/auth/signIn/', data: data.toJson());
+    return await _dio.post('/api/v1/auth/signin', data: data.toJson());
   }
 
   @override

@@ -1,5 +1,7 @@
 import 'package:again_e_commerce/core/them/app_color.dart';
+import 'package:again_e_commerce/features/Presentation/manager/auth_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/model/custom_form_filed.dart';
 import '../../../core/route/page_route_name.dart';
 import '../../../main.dart';
@@ -12,10 +14,12 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  bool isObscure = true ;
+  bool isObscure = true;
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+    var cubit = context.read<AuthCubit>();
     return Scaffold(
       backgroundColor: AppColor.primary,
       body: SingleChildScrollView(
@@ -54,6 +58,7 @@ class _SignInScreenState extends State<SignInScreen> {
               SizedBox(height: 20),
 
               TextFormField(
+                controller: cubit.signInUserNameController,
                 decoration: CustomFormFiled.inputDecoration('Enter Your Name'),
                 style: CustomFormFiled.textStyle(fontSize: 18),
                 cursorColor: CustomFormFiled.cursorColor,
@@ -69,6 +74,7 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
               SizedBox(height: 20),
               TextFormField(
+                controller: cubit.signInPasswordController,
                 obscureText: isObscure,
                 decoration: InputDecoration(
                   hintText: 'Enter Your Password',
@@ -106,7 +112,10 @@ class _SignInScreenState extends State<SignInScreen> {
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(color: Colors.red, width: 2),
                   ),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 14,
+                  ),
                 ),
                 style: CustomFormFiled.textStyle(fontSize: 18),
                 cursorColor: CustomFormFiled.cursorColor,
@@ -117,10 +126,14 @@ class _SignInScreenState extends State<SignInScreen> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    navigatorKey.currentState!.pushNamedAndRemoveUntil(
-                      PageRouteName.layOut,
-                      (route) => false,
-                    );
+                    cubit.signIn().then((value) {
+                      if (value) {
+                        navigatorKey.currentState!.pushNamedAndRemoveUntil(
+                          PageRouteName.layOut,
+                          (route) => false,
+                        );
+                      }
+                    });
                   },
                   child: Text(
                     'Login',

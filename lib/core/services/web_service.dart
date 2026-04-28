@@ -6,21 +6,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../constants/constants.dart';
 
 class WebServices {
-
   static WebServices? _this;
 
   factory WebServices() {
-
     _this ??= WebServices._();
     return _this!;
-
   }
 
   WebServices._() {
-
     freeDio.options.baseUrl = Constants.baseUrl;
+    freeDio.options.connectTimeout = Duration(seconds: 30);
     tokenDio.options.baseUrl = Constants.baseUrl;
-
+    tokenDio.options.connectTimeout = Duration(seconds: 30);
     initializeInterceptors();
   }
 
@@ -110,7 +107,8 @@ class WebServices {
       InterceptorsWrapper(
         onRequest: (options, handler) {
           debugPrint(
-              'send request：baseURL:${options.baseUrl} path:${options.path}，');
+            'send request：baseURL:${options.baseUrl} path:${options.path}，',
+          );
           debugPrint('headers: ${options.headers}');
           debugPrint('query parameters: ${options.queryParameters}');
           debugPrint('data: ${options.data}');
@@ -140,6 +138,7 @@ class WebServices {
 
           // EasyLoading.dismiss();
 
+
           return handler.next(e);
         },
       ),
@@ -158,7 +157,8 @@ class WebServices {
           // };
 
           debugPrint(
-              'send request path:${options.path}，baseURL:${options.baseUrl}');
+            'send request path:${options.path}，baseURL:${options.baseUrl}',
+          );
           debugPrint("method: ${options.method}");
           debugPrint('headers: ${options.headers}');
           debugPrint('data: ${options.data}');

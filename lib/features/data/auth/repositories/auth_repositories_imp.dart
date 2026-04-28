@@ -7,8 +7,6 @@ import 'package:again_e_commerce/features/domain/auth/repositories/auth_reposito
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
-import '../../../../core/failures/failure.dart';
-
 class AuthRepositoriesImp implements AuthRepositories {
   final AuthInterfaceDataSource _authInterfaceDataSource;
 
