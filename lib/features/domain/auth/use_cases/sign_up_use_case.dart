@@ -1,3 +1,5 @@
+import 'package:again_e_commerce/core/failures/failure.dart';
+import 'package:again_e_commerce/features/domain/auth/entity/sign_up_request.dart';
 import 'package:again_e_commerce/features/domain/auth/repositories/auth_repositories.dart';
 import 'package:dartz/dartz.dart';
 
@@ -6,7 +8,7 @@ class SignUpUseCase {
 
   SignUpUseCase(this._authRepositories);
 
-  Future<Either<String, bool>> call() async {
-    return await _authRepositories.signUp();
+  Future<Either<Failure, bool>> call(SignUpRequest data) async {
+    return await _authRepositories.signUp(data);
   }
 }

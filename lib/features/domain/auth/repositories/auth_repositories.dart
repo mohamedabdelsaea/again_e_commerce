@@ -1,12 +1,11 @@
 import 'package:again_e_commerce/core/failures/failure.dart';
 import 'package:again_e_commerce/features/domain/auth/entity/sign_in_request.dart';
 import 'package:again_e_commerce/features/domain/auth/entity/sign_in_response.dart';
+import 'package:again_e_commerce/features/domain/auth/entity/sign_up_request.dart';
 import 'package:dartz/dartz.dart';
 
-abstract  class AuthRepositories {
+abstract class AuthRepositories {
+  Future<Either<Failure, SignInResponse>> signIn(SignInRequest data);
 
-
- Future<Either<Failure ,SignInResponse>> signIn(SignInRequest data );
-  signUp();
-
+  Future<Either<Failure, bool>> signUp(SignUpRequest data);
 }

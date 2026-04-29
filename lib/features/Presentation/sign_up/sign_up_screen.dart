@@ -1,7 +1,8 @@
 import 'package:again_e_commerce/core/route/page_route_name.dart';
+import 'package:again_e_commerce/features/Presentation/manager/auth_cubit.dart';
 import 'package:again_e_commerce/main.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/model/custom_form_filed.dart';
 import '../../../core/them/app_color.dart';
 
@@ -18,6 +19,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+    var cubit = context.read<AuthCubit>();
     return Scaffold(
       backgroundColor: AppColor.primary,
       body: SingleChildScrollView(
@@ -48,7 +50,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               SizedBox(height: 10),
               TextFormField(
-                decoration: CustomFormFiled.inputDecoration('Enter Your Full Name'),
+                controller: cubit.signUpNameController,
+                decoration: CustomFormFiled.inputDecoration(
+                  'Enter Your Full Name',
+                ),
                 style: CustomFormFiled.textStyle(fontSize: 18),
                 cursorColor: CustomFormFiled.cursorColor,
               ),
@@ -63,6 +68,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               SizedBox(height: 10),
               TextFormField(
+                controller: cubit.signUpPhoneController,
                 maxLength: 11,
                 keyboardType: TextInputType.numberWithOptions(),
                 decoration: CustomFormFiled.inputDecoration(
@@ -83,7 +89,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               SizedBox(height: 10),
               TextFormField(
-                decoration: CustomFormFiled.inputDecoration('Enter Your email Address'),
+                controller: cubit.signUpEmailController,
+                decoration: CustomFormFiled.inputDecoration(
+                  'Enter Your email Address',
+                ),
                 style: CustomFormFiled.textStyle(fontSize: 18),
                 cursorColor: CustomFormFiled.cursorColor,
               ),
@@ -98,6 +107,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               SizedBox(height: 10),
               TextFormField(
+                controller: cubit.signUpPasswordController,
                 obscureText: isObscure,
                 decoration: InputDecoration(
                   hintText: 'Enter Your Password',
@@ -149,10 +159,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    navigatorKey.currentState!.pushNamedAndRemoveUntil(
-                      PageRouteName.layOut,
-                      (route) => false,
-                    );
+                    cubit.signUp().then((value) {
+                      if (value) {
+                        navigatorKey.currentState!.pushNamedAndRemoveUntil(
+                          PageRouteName.signIn,
+                          (route) => false,
+                        );
+                      }
+                    });
                   },
                   child: Text(
                     'Sign Up',

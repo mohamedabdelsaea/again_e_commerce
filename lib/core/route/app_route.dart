@@ -23,7 +23,12 @@ class AppRoute {
         );
 
       case PageRouteName.signUp:
-        return MaterialPageRoute(builder: (context) => SignUpScreen());
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => AuthCubit(),
+            child: SignUpScreen(),
+          ),
+        );
 
       case PageRouteName.layOut:
         return MaterialPageRoute(builder: (context) => LayOutScreen());

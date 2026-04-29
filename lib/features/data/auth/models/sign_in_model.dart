@@ -8,8 +8,8 @@ class SignInModel extends SignInResponse {
   });
 
   factory SignInModel.fromJson(Map<String, dynamic> json) => SignInModel(
-    userName: json['user']['userName'],
-    email: json['user']['email'],
-    token: json['token'],
+    userName: json['user']?['name'] ?? "",
+    email: json['user']?['email'] ?? "",
+    token: json['token'] ?? "",
   );
 }

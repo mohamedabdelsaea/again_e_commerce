@@ -48,7 +48,7 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
               SizedBox(height: 34),
               Text(
-                'User Name :',
+                'User Email :',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
@@ -59,7 +59,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
               TextFormField(
                 controller: cubit.signInUserNameController,
-                decoration: CustomFormFiled.inputDecoration('Enter Your Name'),
+                decoration: CustomFormFiled.inputDecoration('Enter Your Email'),
                 style: CustomFormFiled.textStyle(fontSize: 18),
                 cursorColor: CustomFormFiled.cursorColor,
               ),
