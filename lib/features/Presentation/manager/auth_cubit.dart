@@ -18,7 +18,7 @@ part 'auth_states.dart';
 class AuthCubit extends Cubit<AuthStates> {
   AuthCubit() : super(const InitialAuthState());
 
-  WebServices _services = WebServices();
+  final WebServices _services = WebServices();
   TextEditingController signInUserNameController = TextEditingController();
   TextEditingController signInPasswordController = TextEditingController();
 
@@ -55,6 +55,7 @@ class AuthCubit extends Cubit<AuthStates> {
       (data) {
         EasyLoading.dismiss();
         SnackBarService.showSuccessMessage("Successfully");
+        _services.setMobileToken(data.token);
         return Future.value(true);
       },
     );
