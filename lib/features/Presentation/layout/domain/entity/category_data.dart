@@ -3,7 +3,7 @@ class CategoryData {
   final String categoryName;
   final String categoryImg;
 
-  CategoryData({
+  const CategoryData({
     required this.categoryID,
     required this.categoryName,
     required this.categoryImg,

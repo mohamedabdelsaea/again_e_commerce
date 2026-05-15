@@ -1,5 +1,5 @@
 import 'package:again_e_commerce/core/them/app_color.dart';
-import 'package:again_e_commerce/features/Presentation/manager/auth_cubit.dart';
+import 'package:again_e_commerce/features/Presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/model/custom_form_filed.dart';

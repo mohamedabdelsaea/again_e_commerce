@@ -4,11 +4,11 @@ abstract class CategoryAndProductInterFaceDataSource {
   Future<Response> getCategories();
 }
 
-class CategoryAndProductDataSource
+class RemoteCategoryAndProductDataSource
     implements CategoryAndProductInterFaceDataSource {
   final Dio _dio;
 
-  CategoryAndProductDataSource(this._dio);
+  RemoteCategoryAndProductDataSource(this._dio);
 
   @override
   Future<Response> getCategories() async {

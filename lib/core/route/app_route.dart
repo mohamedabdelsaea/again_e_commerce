@@ -1,4 +1,5 @@
-import 'package:again_e_commerce/features/Presentation/manager/auth_cubit.dart';
+import 'package:again_e_commerce/features/Presentation/manager/auth_cubit/auth_cubit.dart';
+import 'package:again_e_commerce/features/Presentation/manager/home_cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:again_e_commerce/core/route/page_route_name.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,13 +32,18 @@ class AppRoute {
         );
 
       case PageRouteName.layOut:
-        return MaterialPageRoute(builder: (context) => LayOutScreen());
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => HomeCubit()..getCategory(),
+            child: LayOutScreen(),
+          ),
+        );
 
       case PageRouteName.shopping:
-        return MaterialPageRoute(builder: (context) => ShoppingScreen());
+        return MaterialPageRoute(builder: (context) => const ShoppingScreen());
 
       default:
-        return MaterialPageRoute(builder: (context) => SplashScreen());
+        return MaterialPageRoute(builder: (context) => const SplashScreen());
     }
   }
 }
