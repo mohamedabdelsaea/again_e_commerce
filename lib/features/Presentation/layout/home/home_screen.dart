@@ -38,14 +38,6 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         children: [
           SearchShopping(),
-          // BlocBuilder(builder: (context, state) {
-          //   switch (state){
-          //     case LoadingGetCategoriesState():{
-          //       return
-          //     }
-          //   }
-          //   return Column();
-          // },),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: ClipRRect(
@@ -92,7 +84,25 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: 100,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
-                    image: DecorationImage(image: AssetImage('assets/images/category_image.jpg'))
+                    image: DecorationImage(image: AssetImage('assets/images/category_image.jpg',),fit: BoxFit.cover),
+                  ),
+                );
+              },
+              separatorBuilder: (context, index) => SizedBox(width: 10),
+              itemCount: 6,
+            ),
+          ),
+          SizedBox(
+            height: 100,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return Container(
+                  height: 100,
+                  width: 100,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    image: DecorationImage(image: AssetImage('assets/images/category_image.jpg',),fit: BoxFit.cover),
                   ),
                 );
               },
